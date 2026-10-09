@@ -1,18 +1,25 @@
 class TopController < ApplicationController
   def main
     if session[:login_uid]
-      render 'main'
+      render "main"
     else
-      render 'login'
+      render "login"
     end
   end
 
   def login
-    if params[:uid] == 'kindai' && params[:pass] == 'sanriko'
-      session[:login_uid] = params[:uid]
+    user = User.find_by(uid: params[:uid], pass: params[:pass])
+
+    if user
+      session[:login_uid] = user.uid
       redirect_to top_main_path
     else
-      render 'error'
+      render "error" 
     end
+  end
+
+  def logout
+    session.delete(:login_uid)
+    redirect_to top_main_path
   end
 end

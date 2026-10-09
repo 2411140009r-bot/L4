@@ -13,9 +13,8 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   get "application/L4"
-
-  get 'top/main'
-  post 'top/login'
-  root 'top#main'
-
+  get "top/main"
+  post "top/login"
+  get "top/logout" # ログアウト用に追加
+  root "top#main"
 end

@@ -1,2 +1,5 @@
 <h2>ログイン成功</h2>
-<p>ようこそ、<%= session[:login_uid] %> さん！</p>
+<p>ようこそ、<%= session[:login_uid] %> さん</p>
+
+<!-- ログアウトボタン（リンク） -->
+<%= link_to "ログアウト", top_logout_path %>
